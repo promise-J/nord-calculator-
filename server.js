@@ -5,6 +5,11 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 app.use(cors());
 
 app.post("/calculate", (req, res) => {
@@ -15,14 +20,11 @@ app.post("/calculate", (req, res) => {
     switch (operation) {
       case "x":
         result = firstNumber * secondNumber;
-        console.log(firstNumber * secondNumber)
         break;
       case "+":
-        console.log(firstNumber + secondNumber)
         result = firstNumber + secondNumber;
         break;
       case "-":
-          console.log(firstNumber - secondNumber)
           result = firstNumber - secondNumber;
           break;
       default:
