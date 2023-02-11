@@ -19,13 +19,13 @@ app.post("/calculate", (req, res) => {
     let result;
     switch (operation) {
       case "x":
-        result = firstNumber * secondNumber;
+        result = +firstNumber * +secondNumber;
         break;
       case "+":
-        result = firstNumber + secondNumber;
+        result = +firstNumber + +secondNumber;
         break;
       case "-":
-          result = firstNumber - secondNumber;
+          result = +firstNumber - +secondNumber;
           break;
       default:
         result = 'Invalid input';
